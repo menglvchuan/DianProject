@@ -1,5 +1,7 @@
 package com.bawei.dian.model;
 
+import android.util.Log;
+
 import com.bawei.dian.Api.Api;
 import com.bawei.dian.Api.ApiService;
 import com.bawei.dian.Bean.Show;
@@ -38,6 +40,7 @@ public class ShowModel {
             public void onResponse(Call<Show> call, Response<Show> response) {
                 Show body = response.body();
                 Show.ResultBean result = body.getResult();
+                Log.i("xx",result.toString());
                 if(onShowListener!=null){
                     onShowListener.onResult(result);
                 }

@@ -11,5 +11,7 @@ public class Api {
     //http://172.17.8.100/small/commodity/v1/commodityList  首页
     public static String show_url="http://172.17.8.100/small/commodity/v1/";
     //搜索  http://172.17.8.100/small/commodity/v1/findCommodityByKeyword
-    public static final String GOODS_SOU = "http://172.17.8.100/";
+    public static  String GOODS_SOU = "http://172.17.8.100/";
+    //http://172.17.8.100/small/user/v1/register  登录
+    public static String Regist_Url = "http://172.17.8.100/small/user/v1/";
 }

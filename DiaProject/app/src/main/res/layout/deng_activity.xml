@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login"
+    android:orientation="vertical"
+    tools:context=".activity.DengActivity">
+
+    <EditText
+        android:id="@+id/et_login_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_160"
+        android:background="@null"
+        android:drawableLeft="@mipmap/login_icon_phone"
+        android:padding="@dimen/dp_10"
+        android:drawablePadding="@dimen/dp_20"
+        android:drawableBottom="@drawable/edit_shape"
+        android:hint="@string/phonenum"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/dp_36"
+        android:textColorHint="#fff" />
+
+    <EditText
+        android:id="@+id/et_login_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingLeft="@dimen/dp_36"
+        android:drawableLeft="@mipmap/login_icon_lock"
+        android:drawableRight="@mipmap/login_icon_eye"
+        android:drawablePadding="@dimen/dp_20"
+        android:drawableBottom="@drawable/edit_shape"
+        android:padding="@dimen/dp_10"
+        android:hint="@string/password"
+        android:password="true"
+        android:maxLines="1"
+        android:textColorHint="#fff" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/ck_rem_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_20"
+            android:text="@string/rem_pwd"
+            android:textSize="@dimen/sp_14"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/text_reg_deng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ck_rem_pwd"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:padding="@dimen/dp_20"
+            android:text="快速注册"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp_14" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="@dimen/dp_280"
+        android:layout_marginTop="@dimen/dp_120"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="center"
+        android:background="@drawable/shape"
+        android:text="@string/login"
+        android:textColor="#ff5f71"
+        android:textSize="@dimen/sp_18" />
+
+</LinearLayout>
