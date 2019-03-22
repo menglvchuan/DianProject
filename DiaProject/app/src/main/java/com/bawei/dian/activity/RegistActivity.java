@@ -11,15 +11,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bawei.dian.Bean.RegistBean;
 import com.bawei.dian.R;
 import com.bawei.dian.presenter.regist.RegistPresenter;
-import com.bawei.dian.view.DengView;
+import com.bawei.dian.view.IRegistView;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -29,7 +31,7 @@ import butterknife.Unbinder;
  * <p>
  * Description:
  */
-public class RegistActivity extends AppCompatActivity implements View.OnClickListener,DengView {
+public class RegistActivity extends AppCompatActivity implements IRegistView {
     @BindView(R.id.et_reg_name)
     EditText etRegName;
     @BindView(R.id.et_reg_yan)
@@ -50,37 +52,50 @@ public class RegistActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_regist);
         bind = ButterKnife.bind(RegistActivity.this);
         registPresenter = new RegistPresenter(this);
-        textLogin.setOnClickListener(this);
-        btnRegist.setOnClickListener(this);
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    }
+    @OnClick({R.id.et_reg_name, R.id.et_reg_yan, R.id.et_reg_pwd, R.id.text_login, R.id.btn_regist})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.et_reg_name:
+                break;
+            case R.id.et_reg_yan:
+                break;
+            case R.id.et_reg_pwd:
+                break;
             case R.id.text_login:
                 Intent intent = new Intent(RegistActivity.this, DengActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.btn_regist:
-                HashMap<String,String> params = new HashMap<>();
+                Map<String,String> map = new HashMap<>();
                 String name = etRegName.getText().toString();
                 String pwd = etRegPwd.getText().toString();
-                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pwd)) {
-                    Toast.makeText(RegistActivity.this, "输入内容不能为空", Toast.LENGTH_SHORT).show();
-                } else {
-                    params.put("phone",name);
-                    params.put("pwd",pwd);
-                    registPresenter.registPre(params);
-                }
+
+                    map.put("phone",name);
+                    map.put("pwd",pwd);
+                    registPresenter.registPre(map);
+
                 break;
         }
     }
 
     @Override
-    public void getViewData(String status) {
-        if (status.equals("0000")){
-
+    public void showMsg(Object o) {
+        RegistBean registBean = (RegistBean) o;
+        String status = registBean.getStatus();
+        if (status.equals("0000")) {
+            Intent intent = new Intent(RegistActivity.this, DengActivity.class);
+            startActivity(intent);
             finish();
+        } else {
+            Toast.makeText(RegistActivity.this, registBean.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void jumpActivity() {
+
     }
 }

@@ -1,11 +1,11 @@
 package com.bawei.dian.presenter.regist;
 
+import com.bawei.dian.Api.Api;
+import com.bawei.dian.activity.RegistActivity;
+import com.bawei.dian.model.regist.IRegistModel;
 import com.bawei.dian.model.regist.RegistModel;
-import com.bawei.dian.view.DengView;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Handler;
 
 /**
  * Time:2019/3/21
@@ -14,21 +14,26 @@ import java.util.logging.Handler;
  * <p>
  * Description:
  */
-public class RegistPresenter {
+public class RegistPresenter implements IRegistPresenter{
 
-    private final RegistModel registModel;
-    private final DengView dengView;
+    private  RegistModel registModel;
+    RegistActivity registActivity;
 
-    public RegistPresenter(DengView view){
+    public RegistPresenter(RegistActivity registActivity){
+        this.registActivity=registActivity;
         registModel = new RegistModel();
-        dengView = view;
     }
-    public void registPre(HashMap<String, String> params) {
-        registModel.getHttpData(params);
-        registModel.setRegistListener(new RegistModel.onRegistListener() {
+    @Override
+    public void registPre(Map<String, String> map) {
+        registModel.regist(Api.REGIST, map, new IRegistModel.IRegistCallBack() {
             @Override
-            public void onResult(String status) {
-                dengView.getViewData(status);
+            public void onStatus(Object o) {
+                registActivity.showMsg(o);
+            }
+
+            @Override
+            public void onFailed(Throwable throwable) {
+
             }
         });
     }

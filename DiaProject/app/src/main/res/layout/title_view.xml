@@ -7,11 +7,11 @@
 
     <ImageView
         android:id="@+id/img_sou"
-        android:layout_width="@dimen/dp_24"
-        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_width="22dp"
         android:layout_height="@dimen/dp_24"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dp_5"
         android:src="@mipmap/menu" />
     <EditText
         android:id="@+id/ed_seek"

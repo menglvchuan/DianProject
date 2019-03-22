@@ -58,9 +58,8 @@ public class RetrofitManager {
         retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(Api.Regist_Url)
+                .baseUrl(Api.GOODS_SOU)
                 .client(okHttpClient)
-
                 .build();
     }
 
