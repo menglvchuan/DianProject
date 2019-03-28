@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:添加地址页面
  */
 public class AddressActivity extends Activity  implements IFindAddressView {
 
@@ -80,7 +80,7 @@ public class AddressActivity extends Activity  implements IFindAddressView {
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         addressRecyclerView.setLayoutManager(linearLayoutManager);
         AddressList addressList = (AddressList) o;
-        Log.i("123", "getFindView: "+addressList.getResult().get(0).getAddress());
+//        Log.i("123", "getFindView: "+addressList.getResult().get(0).getAddress());
         List<AddressList.ResultBean> resultBeanList = addressList.getResult();
         MyAddressAdapter addressAdapter = new MyAddressAdapter(this,resultBeanList);
         addressRecyclerView.setAdapter(addressAdapter);

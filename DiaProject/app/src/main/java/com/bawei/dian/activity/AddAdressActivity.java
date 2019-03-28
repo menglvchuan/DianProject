@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:设置添加地址
  */
 public class AddAdressActivity extends Activity implements IAddrView {
     @BindView(R.id.text_address)

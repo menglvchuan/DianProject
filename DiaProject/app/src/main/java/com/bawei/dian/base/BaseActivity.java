@@ -18,8 +18,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
         initTitle();
         initListener();
-
-
     }
 
     public abstract void initView(Bundle savedInstanceState);

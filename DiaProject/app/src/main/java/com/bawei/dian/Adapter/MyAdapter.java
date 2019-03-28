@@ -24,7 +24,7 @@ import java.util.List;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:首页显示
  */
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;

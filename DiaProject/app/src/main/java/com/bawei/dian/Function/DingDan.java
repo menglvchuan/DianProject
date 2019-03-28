@@ -17,11 +17,11 @@ import com.bawei.dian.R;
  * <p>
  * Description:
  */
-public class FenLei extends Fragment {
+public class DingDan extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fenlei,null,false);
+        View view = inflater.inflate(R.layout.dingdan,null,false);
         return view;
     }
 }

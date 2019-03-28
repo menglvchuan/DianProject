@@ -10,8 +10,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class RegistModel implements IRegistModel{
-
-
     @Override
     public void regist(String url, Map<String, String> map, final IRegistCallBack callBack) {
         ApiService iApiService = RetrofitManager.getInstance().setCreat(ApiService.class);

@@ -26,4 +26,13 @@ public class Api {
     public static final String INSERT_ADDRESS = "/small/user/verify/v1/addReceiveAddress";
     //收货地址列表
     public static final String ADDRESS = "/small/user/verify/v1/receiveAddressList";
+    //商品详情
+    public static final String SHOP_DETAILS ="http://172.17.8.100/small/commodity/";
+    //    同步购物车数据
+    public static final String AddToCart = "http://172.17.8.100/";
+    //    查询购物车
+    public static final String LookCart = "/small/order/verify/v1/findShoppingCart";
+    //    同步购物车数据
+    public static final String AddToCart1 = "/small/order/verify/v1/syncShoppingCart";
+
 }

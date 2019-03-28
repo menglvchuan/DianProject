@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioGroup;
 
-import com.bawei.dian.Function.FenLei;
-import com.bawei.dian.Function.GouwuChe;
-import com.bawei.dian.Function.Mine;
 import com.bawei.dian.Function.Quanzi;
+import com.bawei.dian.Function.DingDan;
+import com.bawei.dian.Function.Mine;
+import com.bawei.dian.Function.GouWuChe;
 import com.bawei.dian.Function.ShouYe;
 
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private void initMian() {
         final ArrayList<Fragment> list = new ArrayList<Fragment>();
         list.add(new ShouYe());
-        list.add(new FenLei());
         list.add(new Quanzi());
-        list.add(new GouwuChe());
+        list.add(new GouWuChe());
+        list.add(new DingDan());
         list.add(new Mine());
         pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

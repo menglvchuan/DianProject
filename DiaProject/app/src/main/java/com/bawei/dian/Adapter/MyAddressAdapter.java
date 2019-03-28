@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:添加地址
  */
 public class MyAddressAdapter extends RecyclerView.Adapter<MyAddressAdapter.ViewHolder> {
     Context context;

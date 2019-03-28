@@ -33,7 +33,7 @@ import butterknife.Unbinder;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:登录
  */
 public class DengActivity extends AppCompatActivity implements LoginView {
     @BindView(R.id.et_login_name)
@@ -118,6 +118,7 @@ public class DengActivity extends AppCompatActivity implements LoginView {
                 Log.i("123", "showMsg: "+loginBean.getResult().getUserId());
                 editor.putString("userId",loginBean.getResult().getUserId()+"");
                 editor.putString("sessionId",loginBean.getResult().getSessionId()+"");
+                Log.d("sb_login",loginBean.getResult().getUserId()+"***"+loginBean.getResult().getSessionId());
                 editor.commit();
                 Intent intent = new Intent(DengActivity.this, MainActivity.class);
                 startActivity(intent);

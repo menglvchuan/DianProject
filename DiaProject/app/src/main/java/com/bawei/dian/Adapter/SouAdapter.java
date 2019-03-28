@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:搜索
  */
 public class SouAdapter extends RecyclerView.Adapter<SouAdapter.MyViewHolder> {
     Context context;
@@ -53,7 +53,7 @@ public class SouAdapter extends RecyclerView.Adapter<SouAdapter.MyViewHolder> {
          *         myViewholder.itemView.setOnClickListener(new View.OnClickListener() {
          *                 @Override
          *                 public void onClick(View v) {
-         *                     if(onShowListener!=null){
+         *                     if(onShowListener!=null){s
          *                         onShowListener.getData(commodityId);
          *                     }
          *                 }

@@ -27,7 +27,7 @@ import java.util.List;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:标题栏搜索
  */
 public class SouTItleActivity extends AppCompatActivity implements SouView {
     private String keyword="板鞋";
