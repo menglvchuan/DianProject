@@ -9,7 +9,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f60"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
@@ -27,14 +26,6 @@
             android:layout_weight="1">
 
         </com.bawei.dian.utils.SearchBoxView>
-
-        <ImageView
-            android:id="@+id/li_coo"
-            android:layout_width="25dp"
-            android:layout_height="21dp"
-            android:layout_marginRight="30dp"
-            android:src="@drawable/main_code" />
-
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

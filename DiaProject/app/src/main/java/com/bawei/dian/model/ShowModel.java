@@ -93,14 +93,14 @@ public class ShowModel {
                     @Override
                     public void onNext(ThreeListinfo threeListinfo) {
                         List<ThreeListinfo.ResultBean> threeBean = threeListinfo.getResult();
-                        if(onShowListener!=null){
-                            onShowListener.onThree(threeBean);
+                        if(onThreeListener!=null){
+                            Log.i("three",threeListinfo.getResult().size()+"---------");
+                            onThreeListener.onThree(threeBean);
                         }
                     }
 
                     @Override
                     public void onError(Throwable t) {
-
                     }
 
                     @Override
@@ -133,12 +133,23 @@ public class ShowModel {
     /**
      * 定义一个接口
      */
+    public interface OnThreeListener{
+        void onThree(List<ThreeListinfo.ResultBean> threeBean);
+
+    }
+    public OnThreeListener onThreeListener;
+
+    public void setOnThreeListener(OnThreeListener onThreeListener) {
+        this.onThreeListener = onThreeListener;
+    }
+
     public interface OnShowListener{
         void onResult(Show.ResultBean result);
         void onBanner(List<BannaBean.ResultBean> result);
         void onOne(List<OneListinfo.ResultBean> oneList);
         void onTwo(List<TwoListinfo.ResultBean> result);
-        void onThree(List<ThreeListinfo.ResultBean> threeBean);
+
+
     }
     public OnShowListener onShowListener;
 

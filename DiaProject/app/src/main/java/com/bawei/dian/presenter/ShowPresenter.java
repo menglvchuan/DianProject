@@ -1,5 +1,7 @@
 package com.bawei.dian.presenter;
 
+import android.util.Log;
+
 import com.bawei.dian.Bean.BannaBean;
 import com.bawei.dian.Bean.OneListinfo;
 import com.bawei.dian.Bean.Show;
@@ -49,13 +51,10 @@ public class ShowPresenter {
 
             @Override
             public void onTwo(List<TwoListinfo.ResultBean> result) {
+                Log.i("three",result.size()+"++++++");
                 showView.getTwoData(result);
             }
 
-            @Override
-            public void onThree(List<ThreeListinfo.ResultBean> threeBean) {
-                showView.getThreeData(threeBean);
-            }
         });
     }
 
@@ -69,6 +68,12 @@ public class ShowPresenter {
 
     public void getThreeList(String threeListUrl, String mid, int i, int i1, CompositeDisposable disposable) {
         showModel.getThreeList(threeListUrl,mid,i,i1,disposable);
+        showModel.setOnThreeListener(new ShowModel.OnThreeListener() {
+            @Override
+            public void onThree(List<ThreeListinfo.ResultBean> threeBean) {
+                showView.getThreeData(threeBean);
+            }
+        });
     }
 
 

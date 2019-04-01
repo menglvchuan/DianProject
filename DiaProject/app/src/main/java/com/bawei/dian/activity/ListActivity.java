@@ -1,10 +1,8 @@
 package com.bawei.dian.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.bawei.dian.Adapter.ListOneAdapter;
 import com.bawei.dian.Adapter.ListThreeAdapter;
@@ -34,25 +33,14 @@ import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public class ListActivity extends BaseActivitiy implements View.OnClickListener,ShowView {
+public class ListActivity extends BaseActivitiy implements ShowView {
     private SearchBoxView searchBox;
     private RecyclerView recycle;
     private ImageView common;
     private ShowPresenter showPresenter;
     private CompositeDisposable disposable = new CompositeDisposable();
     private RecyclerView towre;
-    private ImageView coo;
 
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.li_common:
-                //请求一级列表数据
-                showPresenter.getOneList(Api.OneListUrl, disposable);
-                break;
-        }
-    }
 
     @Override
     public void getViewData(Show.ResultBean result) {
@@ -82,7 +70,7 @@ public class ListActivity extends BaseActivitiy implements View.OnClickListener,
         // 设置PopupWindow是否能响应点击事件
         popupWindow.setTouchable(true);
         //显示
-        popupWindow.showAsDropDown(coo);
+        popupWindow.showAsDropDown(searchBox);
         listOneAdapter.setOnOneClick(new ListOneAdapter.OnOneClick() {
             @Override
             public void setIdData(String id) {
@@ -110,6 +98,8 @@ public class ListActivity extends BaseActivitiy implements View.OnClickListener,
 
     @Override
     public void getThreeData(List<ThreeListinfo.ResultBean> threeBean) {
+
+        Log.i("three",threeBean.size()+"");
         ListThreeAdapter listThreeAdapter = new ListThreeAdapter(this, threeBean);
         recycle.setAdapter(listThreeAdapter);
     }
@@ -134,13 +124,20 @@ public class ListActivity extends BaseActivitiy implements View.OnClickListener,
         searchBox = findViewById(R.id.li_search);
         recycle = findViewById(R.id.li_recycle);
         common = findViewById(R.id.li_common);
-        coo = findViewById(R.id.li_coo);
         //设置样式
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         recycle.setLayoutManager(manager);
 
 
         showPresenter = new ShowPresenter(this);
+        common.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ListActivity.this,"1111",Toast.LENGTH_SHORT).show();
+                showPresenter.getOneList(Api.OneListUrl, disposable);
+            }
+        });
+
     }
 
     @Override
