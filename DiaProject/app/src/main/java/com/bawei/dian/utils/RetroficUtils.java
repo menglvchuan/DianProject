@@ -21,13 +21,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Description:
  */
 public class RetroficUtils {
-
     private static RetroficUtils retroficUtils;
-
     private RetroficUtils() {
 
     }
-
     public static RetroficUtils getInStence() {
         if (retroficUtils == null) {
             synchronized (RetroficUtils.class) {
@@ -38,12 +35,8 @@ public class RetroficUtils {
         }
         return retroficUtils;
     }
-
     //ok对象
-
     private static OkHttpClient okHttpClient;
-
-
     public static synchronized OkHttpClient getOkHttpClient() {
         //日志拦截器
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
@@ -68,8 +61,6 @@ public class RetroficUtils {
         }
         return okHttpClient;
     }
-
-
     private static OkHttpClient okHttpClientttt=null;
     public static OkHttpClient getOkHttpClient(final String uid, final String sid){
         //日志拦截器
@@ -107,13 +98,6 @@ public class RetroficUtils {
 
         return okHttpClientttt;
     }
-
-
-
-
-
-
-
     //得到retrofit对象
     public static  Retrofit getRetrofit(String url) {
         Retrofit builder = new Retrofit.Builder()
@@ -124,18 +108,12 @@ public class RetroficUtils {
 
         return builder;
     }
-
-
-
-
     //java的代理对象
     public <T> T getRetrofitService(String url, Class<T> service) {
         Retrofit retrofit = getRetrofit(url);
         T t = retrofit.create(service);
         return t;
     }
-
-
     //请求方式 带请求头
     public static Retrofit getretrofinHand(String url,String uid,String sid){
         Retrofit builder = new Retrofit.Builder()
@@ -145,7 +123,6 @@ public class RetroficUtils {
                 .build();
         return builder;
     }
-
     public <T>T getserviserHand(String url,String uid,String sid,Class<T>service){
         Retrofit retrofit = getretrofinHand(url, uid, sid);
         T t = retrofit.create(service);

@@ -24,6 +24,10 @@ public class SelectShopAdapter extends RecyclerView.Adapter<SelectShopAdapter.Vi
     private List<SelectShopBean.ResultBean> list;
     private Context context;
 
+    /**
+     * 适配器
+     *
+     */
     public SelectShopAdapter(Context context) {
         this.context = context;
         list=new ArrayList<>();
@@ -72,7 +76,7 @@ public class SelectShopAdapter extends RecyclerView.Adapter<SelectShopAdapter.Vi
             text_delete=itemView.findViewById(R.id.item_select_text_delete);
             text_num=itemView.findViewById(R.id.item_custom_num);
         }
-
+        //全选 删除
         public void getdata(final SelectShopBean.ResultBean item, Context context, final int i) {
             Glide.with(context).load(item.getPic()).into(item_image);
             text_name.setText(item.getCommodityName());

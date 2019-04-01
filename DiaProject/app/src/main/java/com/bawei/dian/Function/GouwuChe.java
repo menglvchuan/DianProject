@@ -1,6 +1,7 @@
 package com.bawei.dian.Function;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -15,9 +16,11 @@ import com.bawei.dian.Adapter.SelectShopAdapter;
 import com.bawei.dian.Bean.SelectShopBean;
 import com.bawei.dian.Bean.ShopSelectListBean;
 import com.bawei.dian.R;
+import com.bawei.dian.activity.CreationActivity;
 import com.bawei.dian.base.BaseFragment;
 import com.bawei.dian.presenter.car.ShopCartPresenter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +34,7 @@ import butterknife.Unbinder;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:购物车
  */
 public class GouWuChe extends BaseFragment {
     @BindView(R.id.shop_recy)
@@ -49,6 +52,7 @@ public class GouWuChe extends BaseFragment {
     List<SelectShopBean.ResultBean> shop_list = new ArrayList<>();
     private String sessionId;
     private long exitTime = 0;
+    private List<SelectShopBean.ResultBean> creation_bill;
 
     @Override
     public void initData() {
@@ -67,7 +71,30 @@ public class GouWuChe extends BaseFragment {
     }
     //点击跳转支付订单
     private void onClickCreation() {
-
+        shopTextGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String all_price = shopTextAllprice.getText().toString();
+                if (!(all_price.equals("0")) && !(all_price.equals("0.0"))) {
+                    Intent intent = new Intent(getActivity(), CreationActivity.class);
+                    creation_bill = new ArrayList<>();
+                    //判断商品是否被选中
+                    //如果被选中就放到集合里，通过intent传到activity中
+                    for (int i = 0; i < shop_list.size(); i++)
+                        if (shop_list.get(i).isIscheck()) {
+                            creation_bill.add(new SelectShopBean.ResultBean(
+                                    shop_list.get(i).getCommodityId(),
+                                    shop_list.get(i).getCommodityName(),
+                                    shop_list.get(i).getCount(),
+                                    shop_list.get(i).getPic(),
+                                    shop_list.get(i).getPrice()
+                            ));
+                        }
+                    intent.putExtra("creation_bill", (Serializable) creation_bill);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void onClickCheckAll() {
@@ -101,6 +128,7 @@ public class GouWuChe extends BaseFragment {
     }
 
     private void getpriceCount() {
+        //全选
         selectShopAdapter.setOnClick(new SelectShopAdapter.ShopClick() {
             @Override
             public void shopPrice(List<SelectShopBean.ResultBean> list) {
@@ -131,6 +159,7 @@ public class GouWuChe extends BaseFragment {
                 }
             }
         });
+        //删除
         selectShopAdapter.setRemove(new SelectShopAdapter.RemoveCallBack() {
             @Override
             public void removeposition(List<SelectShopBean.ResultBean> list, int position) {
@@ -154,8 +183,11 @@ public class GouWuChe extends BaseFragment {
                 } else {
                     shopBoxAll.setChecked(true);
                 }
+                //删除
                 shop_list.remove(position);
+                //总价
                 shopTextAllprice.setText("" + totalPrice);
+                //数量
                 shopTextGo.setText("去结算(" + num + ")");
                 //添加购物车的集合
                 List<ShopSelectListBean> addlist = new ArrayList<>();
@@ -232,7 +264,6 @@ public class GouWuChe extends BaseFragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-
                     //双击退出
                     if (System.currentTimeMillis() - exitTime > 2000) {
                         Toast.makeText(getActivity(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
@@ -247,5 +278,11 @@ public class GouWuChe extends BaseFragment {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mIpresenterImpl.deatch();
     }
 }

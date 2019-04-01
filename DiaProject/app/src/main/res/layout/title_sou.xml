@@ -7,14 +7,29 @@
     <com.bawei.dian.Title_view
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.bawei.dian.Title_view>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/title_swip"
+    <LinearLayout
+        android:id="@+id/li_succ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/title_swip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/title_sou_rlv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/li_error"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/title_sou_rlv"
+        <ImageView
+            android:src="@mipmap/error"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
-
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

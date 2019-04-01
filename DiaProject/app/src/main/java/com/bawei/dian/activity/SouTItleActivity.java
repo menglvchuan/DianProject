@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,12 +40,16 @@ public class SouTItleActivity extends AppCompatActivity implements SouView {
     private RecyclerView title_rlv;
     private SwipeRefreshLayout swip;
     private Handler handler = new Handler();
+    private LinearLayout li_error;
+    private LinearLayout li_succ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title_sou);
         //找控件
+        li_error = findViewById(R.id.li_error);
+        li_succ = findViewById(R.id.li_succ);
         title_rlv = findViewById(R.id.title_sou_rlv);
         ed_seek = findViewById(R.id.ed_seek);
         title_sou_text = findViewById(R.id.sou_text);
@@ -104,8 +109,11 @@ public class SouTItleActivity extends AppCompatActivity implements SouView {
                 }
             });
             title_rlv.setAdapter(souAdapter);
-        }else {
-            Toast.makeText(SouTItleActivity.this,"已经是最底了",Toast.LENGTH_SHORT).show();
+            li_error.setVisibility(View.GONE);
+            li_succ.setVisibility(View.VISIBLE);
+        } else {
+            li_error.setVisibility(View.VISIBLE);
+            li_succ.setVisibility(View.GONE);
         }
     }
 }

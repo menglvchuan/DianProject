@@ -18,7 +18,7 @@ public class Api {
     public static final String REGIST ="http://172.17.8.100/small/user/v1/register";
     //登录
     public static final String LOGIN = "http://172.17.8.100/small/user/v1/login";
-    //设置默认地址的接口
+  //设置默认地址的接口
     public static final String SHOW_DEFAULT_ADDRESS_URL="small/user/verify/v1/setDefaultReceiveAddress";
     //查询收货地址的接口
     public static final String SHOW_SELECT_ADDRESS_URL="small/user/verify/v1/receiveAddressList";
@@ -34,5 +34,17 @@ public class Api {
     public static final String LookCart = "/small/order/verify/v1/findShoppingCart";
     //    同步购物车数据
     public static final String AddToCart1 = "/small/order/verify/v1/syncShoppingCart";
+    // 创建订单
+    public static final String CREAT_DING = "/small/order/verify/v1/createOrder";
+    //oneList
+    //http://172.17.8.100/small/commodity/v1/findFirstCategory
+    public static final String OneListUrl = "http://mobile.bwstudent.com/";
 
+    //TwoList
+    //http://172.17.8.100/small/commodity/v1/findSecondCategory
+    public static final String TwoListUrl = "http://mobile.bwstudent.com/";
+
+    //ThreeList
+    //http://172.17.8.100/small/commodity/v1/findCommodityByCategory
+    public static final String ThreeListUrl = "http://mobile.bwstudent.com/";
 }

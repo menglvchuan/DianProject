@@ -16,6 +16,11 @@ import android.widget.Toast;
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.TELEPHONY_SERVICE;
 
+/**
+ * 网络判断工具类
+ * 是否有网
+ * 移动流量 wifi
+ */
 public class NetWorkUtils {
     //判断是否有网络连接
     public static final boolean isNetworkConnected(Context context) {

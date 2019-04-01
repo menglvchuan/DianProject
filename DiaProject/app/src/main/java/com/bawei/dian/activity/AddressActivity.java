@@ -49,8 +49,6 @@ public class AddressActivity extends Activity  implements IFindAddressView {
     RecyclerView addressRecyclerView;
     @BindView(R.id.add_address)
     Button addAddress;
-    private AddrPresenter addrPresenter;
-    private CityWheelPickerPopupWindow pickerPopupWindow;
     private FindAddressPresenter findAddressPresenter;
 
     @Override
@@ -59,8 +57,8 @@ public class AddressActivity extends Activity  implements IFindAddressView {
         setContentView(R.layout.activity_address);
         ButterKnife.bind(this);
         SharedPreferences preferences = getSharedPreferences("config", Context.MODE_PRIVATE);
-        final String userId = preferences.getString("userId", "");
-        final String sessionId = preferences.getString("sessionId", "");
+        String userId = preferences.getString("userId", "");
+        String sessionId = preferences.getString("sessionId", "");
 
         findAddressPresenter = new FindAddressPresenter(AddressActivity.this);
         findAddressPresenter.getFindPresenter(userId,sessionId);
@@ -80,8 +78,9 @@ public class AddressActivity extends Activity  implements IFindAddressView {
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         addressRecyclerView.setLayoutManager(linearLayoutManager);
         AddressList addressList = (AddressList) o;
-//        Log.i("123", "getFindView: "+addressList.getResult().get(0).getAddress());
+       // Log.i("123", "getFindView: "+addressList.getResult().get(0).getAddress());
         List<AddressList.ResultBean> resultBeanList = addressList.getResult();
+        //Log.i("add",resultBeanList.toString());
         MyAddressAdapter addressAdapter = new MyAddressAdapter(this,resultBeanList);
         addressRecyclerView.setAdapter(addressAdapter);
     }

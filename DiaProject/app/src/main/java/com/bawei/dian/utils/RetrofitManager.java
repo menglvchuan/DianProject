@@ -38,7 +38,6 @@ public class RetrofitManager {
         }
         return instance;
     }
-
     public static OkHttpClient getOkHttpClient(){
         if (okHttpClient == null){
             synchronized(OkHttpClient.class){
@@ -47,13 +46,10 @@ public class RetrofitManager {
                         .readTimeout(3000,TimeUnit.SECONDS)
                         .connectTimeout(3000,TimeUnit.SECONDS)
                         .build();
-
             }
         }
         return okHttpClient;
     }
-
-
     private void initRetrofit(){
         retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))

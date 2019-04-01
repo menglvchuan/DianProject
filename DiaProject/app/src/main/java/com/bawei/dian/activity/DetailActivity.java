@@ -98,7 +98,6 @@ public class DetailActivity extends BaseActivitiy<DetailsPresenter> implements D
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(userId.equals("")){
                     Intent intent = new Intent(DetailActivity.this, DengActivity.class);
                     startActivity(intent);
@@ -183,7 +182,7 @@ public class DetailActivity extends BaseActivitiy<DetailsPresenter> implements D
     //得到同步之后回调过来的值
     @Override
     public void viewww(String s) {
-        Toast.makeText(this,"111", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"同步成功", Toast.LENGTH_SHORT).show();
     }
 
     @Override

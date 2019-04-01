@@ -15,7 +15,7 @@ import com.bawei.dian.R;
  * <p>
  * Author:肖佳莹
  * <p>
- * Description:
+ * Description:圈子
  */
 public class Quanzi extends Fragment {
     @Nullable

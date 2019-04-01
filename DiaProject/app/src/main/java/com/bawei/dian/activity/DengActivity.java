@@ -119,6 +119,8 @@ public class DengActivity extends AppCompatActivity implements LoginView {
                 editor.putString("userId",loginBean.getResult().getUserId()+"");
                 editor.putString("sessionId",loginBean.getResult().getSessionId()+"");
                 Log.d("sb_login",loginBean.getResult().getUserId()+"***"+loginBean.getResult().getSessionId());
+                editor.putString("image",loginBean.getResult().getHeadPic());
+                editor.putString("nikname",loginBean.getResult().getNickName());
                 editor.commit();
                 Intent intent = new Intent(DengActivity.this, MainActivity.class);
                 startActivity(intent);

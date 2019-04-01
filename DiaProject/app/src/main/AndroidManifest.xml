@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bawei.dian">
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <application
         android:name=".App.MyApplication"
         android:allowBackup="true"
@@ -28,6 +29,8 @@
         <activity android:name=".activity.RegistActivity"></activity>
         <activity android:name=".activity.AddressActivity"></activity>
         <activity android:name=".activity.AddAdressActivity"></activity>
+        <activity android:name=".activity.CreationActivity"></activity>
+        <activity android:name=".activity.ListActivity"></activity>
     </application>
 
 </manifest>

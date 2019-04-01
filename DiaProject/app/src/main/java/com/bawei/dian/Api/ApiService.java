@@ -2,19 +2,27 @@ package com.bawei.dian.Api;
 
 import com.bawei.dian.Bean.AddShoppBean;
 import com.bawei.dian.Bean.AddressList;
+import com.bawei.dian.Bean.BannaBean;
+import com.bawei.dian.Bean.CreationShopBean;
+import com.bawei.dian.Bean.DefaultBean;
 import com.bawei.dian.Bean.InsertAddress;
 import com.bawei.dian.Bean.JsonBean;
 import com.bawei.dian.Bean.LoginBean;
+import com.bawei.dian.Bean.OneListinfo;
 import com.bawei.dian.Bean.RegistBean;
+import com.bawei.dian.Bean.SelectAddressBean;
 import com.bawei.dian.Bean.SelectShopBean;
 import com.bawei.dian.Bean.ShopDetails;
 import com.bawei.dian.Bean.ShoppBean;
 import com.bawei.dian.Bean.Show;
+import com.bawei.dian.Bean.ThreeListinfo;
 import com.bawei.dian.Bean.TongBuCart;
+import com.bawei.dian.Bean.TwoListinfo;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -24,6 +32,7 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
@@ -106,5 +115,27 @@ public interface ApiService {
     //购物车页面的添加
     @PUT(Api.AddToCart1)
     Observable<TongBuCart> tbCars(@Header("userId") int userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String,String> map);
+    //创建订单
+    @POST(Api.CREAT_DING)
+    Observable<CreationShopBean> CreatDing(@HeaderMap HashMap<String,String> maps, @QueryMap HashMap<String,String> map);
+    //设置默认收货地址
+    @POST(Api.SHOW_DEFAULT_ADDRESS_URL)
+    Observable<DefaultBean> deFaultDi(@HeaderMap HashMap<String,String> maps, @QueryMap HashMap<String,String> pars);
+    //查询收货地址
+    @GET(Api.SHOW_SELECT_ADDRESS_URL)
+    Observable<SelectAddressBean> ShouHuo(@HeaderMap HashMap<String,String> maps);
+    //OneList
+    @GET("small/commodity/v1/findFirstCategory")
+    Flowable<OneListinfo> getOneList();
 
+    //OneList
+    @GET("small/commodity/v1/findSecondCategory")
+    Flowable<TwoListinfo> getTwoList(@Query("firstCategoryId") String firstCategoryId);
+
+    //ThreeList
+    @GET("small/commodity/v1/findCommodityByCategory")
+    Flowable<ThreeListinfo> getThreeList(@Query("categoryId") String firstCategoryId, @Query("page") int page, @Query("count") int count);
+    //轮播
+    @GET("small/commodity/v1/bannerShow")
+    Call<BannaBean> getban();
 }

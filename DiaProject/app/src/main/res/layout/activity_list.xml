@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ListActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f60"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/li_common"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/mine_n"
+            />
+
+        <com.bawei.dian.utils.SearchBoxView
+            android:id="@+id/li_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </com.bawei.dian.utils.SearchBoxView>
+
+        <ImageView
+            android:id="@+id/li_coo"
+            android:layout_width="25dp"
+            android:layout_height="21dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/main_code" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/li_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
