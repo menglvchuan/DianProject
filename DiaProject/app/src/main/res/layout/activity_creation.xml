@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="asfg"
+            android:text="11"
             android:textSize="@dimen/sp_14"
             android:contentDescription="#666666"
             />
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/creation_name"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="sagvadoinva"
+            android:text="13750000331"
             />
         <TextView
             android:id="@+id/creation_address"
@@ -46,7 +46,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/creation_name"
-            android:text="sagvadoinva"
+            android:text="安徽省安阳市枞阳县111"
             android:layout_marginTop="@dimen/dp_10"
             />
         <ImageView

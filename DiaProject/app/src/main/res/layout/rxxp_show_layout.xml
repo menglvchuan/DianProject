@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:padding="@dimen/dp_10"
         android:layout_height="wrap_content">
-        <com.facebook.drawee.view.SimpleDraweeView
+        <ImageView
             android:layout_gravity="center"
             android:id="@+id/rxxp_simple_view"
             android:layout_width="@dimen/dp_99"

@@ -8,10 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bawei.dian.Bean.Show;
 import com.bawei.dian.R;
+import com.bumptech.glide.Glide;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 import com.facebook.drawee.generic.RoundingParams;
@@ -49,22 +51,22 @@ public class MyRxxpAdapter extends RecyclerView.Adapter<MyRxxpAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyRxxpAdapter.ViewHolder viewHolder, final int i) {
-        Uri parse = Uri.parse(commodityList.get(i).getMasterPic());
+        /*Uri parse = Uri.parse(commodityList.get(i).getMasterPic());
         ImageRequest request = ImageRequestBuilder.newBuilderWithSource(parse)
                 .build();
         PipelineDraweeController controller= (PipelineDraweeController) Fresco.newDraweeControllerBuilder()
                 .setImageRequest(request)
                 .setOldController(viewHolder.rxxpSimpleView.getController())
                 .build();
-        viewHolder.rxxpSimpleView.setController(controller);
+        viewHolder.rxxpSimpleView.setController(controller);*/
         RoundingParams cornersRadius = RoundingParams.fromCornersRadius(5f);
         cornersRadius.setRoundAsCircle(false);
         cornersRadius.setCornersRadius(8);
-        viewHolder.rxxpSimpleView.setImageURI(parse);
-        viewHolder.rxxpSimpleView.getHierarchy().setRoundingParams(cornersRadius);
+        //viewHolder.rxxpSimpleView.setImageURI(parse);
+        //viewHolder.rxxpSimpleView.getHierarchy().setRoundingParams(cornersRadius);
         viewHolder.rxxpTitle.setText(commodityList.get(i).getCommodityName());
         viewHolder.rxxpPrice.setText("￥:" + commodityList.get(i).getPrice());
-
+        Glide.with(context).load(commodityList.get(i).getMasterPic()).into(viewHolder.rxxpSimpleView);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +86,7 @@ public class MyRxxpAdapter extends RecyclerView.Adapter<MyRxxpAdapter.ViewHolder
 
         private final TextView rxxpTitle;
         private final TextView rxxpPrice;
-        private final SimpleDraweeView rxxpSimpleView;
+        private final ImageView rxxpSimpleView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

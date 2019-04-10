@@ -8,10 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bawei.dian.Bean.Show;
 import com.bawei.dian.R;
+import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,8 +49,9 @@ public class MyMlssAdapter extends RecyclerView.Adapter<MyMlssAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyMlssAdapter.ViewHolder viewHolder, final int i) {
-        Uri uri = Uri.parse(mlssCommodityList.get(i).getMasterPic());
-        viewHolder.mlshSimpleView.setImageURI(uri);
+        Glide.with(context).load(mlssCommodityList.get(i).getMasterPic()).into(viewHolder.mlshSimpleView);
+        /*Uri uri = Uri.parse(mlssCommodityList.get(i).getMasterPic());
+        viewHolder.mlshSimpleView.setImageURI(uri);*/
         viewHolder.mlshTitle.setText(mlssCommodityList.get(i).getCommodityName());
         viewHolder.mlshPrice.setText("￥:"+mlssCommodityList.get(i).getPrice());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +70,7 @@ public class MyMlssAdapter extends RecyclerView.Adapter<MyMlssAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.mlsh_simple_View)
-        SimpleDraweeView mlshSimpleView;
+        ImageView mlshSimpleView;
         @BindView(R.id.mlsh_title)
         TextView mlshTitle;
         @BindView(R.id.mlsh_price)
